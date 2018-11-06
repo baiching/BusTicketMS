@@ -5,41 +5,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography.X509Certificates;
-
+using System.Data.Entity;
+using DLL.Interfaces.UserInterfaces;
 
 namespace DLL.UserContext
 {
-    public class UserRepository<T> where T : User
+    public class UserRepository<T> : IUserRepository<T> where T : User
     {
-        public bool Add(T t)
+        internal Context context = new Context();
+        public virtual bool Add(T entity)
+        {
+            context.Set<T>().Add(entity);
+            return context.SaveChanges() > 0;
+        }
+
+        public virtual List<T> GetAll()
+        {
+            return context.Set<T>().ToList();
+        }
+
+        public virtual T GetByEmail(string email)
+        {
+            
+            return context.Set<T>().FirstOrDefault(r => r.Email == email);
+            
+        }
+
+        public virtual bool Remove(string userName)
         {
             throw new NotImplementedException();
         }
 
-        public List<T> GetAll()
+        public virtual bool Update(T entity)
         {
-            throw new NotImplementedException();
+            context.Entry<T>(entity).State = EntityState.Modified;
+            return context.SaveChanges() > 0;
         }
 
-        public T GetByEmail(string email)
-        {
-            using (var context = new Context())
-            {
-                return context.Set<T>().FirstOrDefault(r => r.Email == email);
-            }
-        }
-
-        public bool Remove(string userName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Update(T t)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool UpdatePassword(string email, string password)
+        public virtual bool UpdatePassword(string email, string password)
         {
             using (var context = new Context())
             {

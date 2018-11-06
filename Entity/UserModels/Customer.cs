@@ -12,7 +12,7 @@ namespace Entity.UserModels
         {
             Role = Role.Customer;
         }
-
+        public int MyProperty { get; set; }
         public override User Copy(User user)
         {
             Customer customer = (Customer)user;
@@ -23,7 +23,6 @@ namespace Entity.UserModels
             Email = customer.Email;
             Gender = customer.Gender;
             return customer;
-            
         }
     }
 }

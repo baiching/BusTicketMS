@@ -49,8 +49,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context.cs" />
+    <Compile Include="Interfaces\UserInterfaces\IAdminRepository.cs" />
+    <Compile Include="Interfaces\UserInterfaces\ICustomerRepository.cs" />
+    <Compile Include="Interfaces\UserInterfaces\IUserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserContext\IUserRepository.cs" />
     <Compile Include="UserContext\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -7,6 +7,7 @@
         public BusType BusType { get; set; }
         public int BusNumber { get; set; }
         public BusCompany BusCompany { get; set; }
+        public int TotalSeat { get; set; }
         public Stopage Stopage { get; set; }
     }
 }
