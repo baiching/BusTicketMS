@@ -48,6 +48,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusModels\Bus.cs" />
+    <Compile Include="BusModels\BusCompany.cs" />
+    <Compile Include="BusModels\Offer.cs" />
+    <Compile Include="BusModels\Stopage.cs" />
     <Compile Include="Logs\Log.cs" />
     <Compile Include="Logs\SearchLog.cs" />
     <Compile Include="Logs\UserLog.cs" />
